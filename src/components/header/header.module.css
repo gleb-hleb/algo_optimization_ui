@@ -1,0 +1,8 @@
+.header {
+    display: flex;
+    position: relative;
+
+    height: 60px;
+    background: var(--white);
+    box-shadow: 0 1px 1px black;
+}

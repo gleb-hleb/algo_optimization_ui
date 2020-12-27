@@ -1,10 +1,10 @@
 @import '~normalize.css/normalize.css';
 
 :root {
-  --black: #1d1d1d;
+  --black: #050404;
   --white: #ffffff;
   --yellow: #f0ad4e;
-  --yellow-light: #ffd25d;
+  --yellow-light: #e9e4b1;
   --grey: #e5e5e5;
   --grey-dark: #898989;
 }
