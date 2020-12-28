@@ -10,15 +10,12 @@ const NavigationBar = () => {
     return (
         <div className={styles.bar}>
             <div className={styles.topContent}>
-                <NavigationButton image={SystemImg}/>
-                <NavigationButton image={SupportImg}/>
-                <NavigationButton image={TelegramImg}/>
-                {/*//                   onClick={*/}
-                {/*//     () => <Redirect to={'/telegram_page'}/>*/}
-                {/*// }/>*/}
+                <NavigationButton image={SystemImg} to={'/optimization_page'}/>
+                <NavigationButton image={SupportImg} to={'/support_page'}/>
+                <NavigationButton image={TelegramImg} to={'/telegram_page'}/>
             </div>
             <div className={styles.bottomContent}>
-                <NavigationButton image={SettingsImg}/>
+                <NavigationButton image={SettingsImg} to={'/settings_page'}/>
             </div>
         </div>
     );

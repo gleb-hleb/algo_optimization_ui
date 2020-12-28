@@ -10,7 +10,10 @@ import initializeStore from './redux/store';
 import history from './redux/reducer/history'
 
 const initialState = window.initialReduxState;
+console.log(initialState); // -> undefined
 const store = initializeStore(initialState, history)
+
+window.store = store;
 
 ReactDOM.render(
     <Provider store={store}>
