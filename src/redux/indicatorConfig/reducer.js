@@ -1,28 +1,28 @@
-import {INDICATORS} from "./constants";
+import {INDICATOR_CONFIG} from "./constants";
 
 const initialState = {
-    indicators: null,
+    indicator_config: null,
     loading: false,
     error: null
 }
 
-const indicatorsListReducer = (state = initialState, action) => {
+const indicatorConfigReducer = (state = initialState, action) => {
     const {type, payload} = action;
     switch (type) {
-        case INDICATORS.GET_INDICATORS_LIST_REQUEST:
+        case INDICATOR_CONFIG.GET_INDICATOR_CONFIG_REQUEST:
             return {
                 ...state,
                 error: null,
-                loading: true
+                loading: true,
             };
-        case INDICATORS.GET_INDICATORS_LIST_SUCCESS:
+        case INDICATOR_CONFIG.GET_INDICATOR_CONFIG_SUCCESS:
             return {
                 ...state,
-                //TODO: make payload.indicators
-                indicators: payload.payload,
+                //TODO: make payload.indicator
+                indicator_config: payload,
                 loading: false
             };
-        case INDICATORS.GET_INDICATORS_LIST_ERROR:
+        case INDICATOR_CONFIG.GET_INDICATOR_CONFIG_ERROR:
             return {
                 ...state,
                 error: payload,
@@ -33,4 +33,4 @@ const indicatorsListReducer = (state = initialState, action) => {
     }
 };
 
-export default indicatorsListReducer;
+export default indicatorConfigReducer;
