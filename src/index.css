@@ -1,5 +1,9 @@
 @import '~normalize.css/normalize.css';
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --black: #050404;
   --white: #ffffff;

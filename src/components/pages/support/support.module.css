@@ -1,0 +1,9 @@
+.tab {
+    display: flex;
+    position: relative;
+    float: left;
+
+    height: calc(100vh - 60px);
+    width: calc(100vw - 130px);
+    background: var(--yellow-light);
+}

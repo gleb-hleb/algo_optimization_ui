@@ -1,10 +1,13 @@
 import {combineReducers} from 'redux';
+import {connectRouter} from 'connected-react-router';
 import appPropertiesReducer from "../appProperties/reducer";
 import {all, fork} from "redux-saga/effects";
 import {appPropertiesSaga} from "../appProperties/sagas";
+import history from './history'
+
 
 const reducer = combineReducers({
-    foo: "bar",
+    router: connectRouter(history),
     appProperties: appPropertiesReducer,
 });
 

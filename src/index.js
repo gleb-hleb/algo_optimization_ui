@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
 
 import App from './components/app';
 
 import initializeStore from './redux/store';
-import {createHashHistory} from "history";
+import history from './redux/reducer/history'
 
-const history = createHashHistory();
 const initialState = window.initialReduxState;
 const store = initializeStore(initialState, history)
 
 ReactDOM.render(
     <Provider store={store}>
-        <App store={store}/>
+        <ConnectedRouter history={history}>
+            <App store={store}/>
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 );

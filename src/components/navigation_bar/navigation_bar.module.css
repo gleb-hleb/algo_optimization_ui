@@ -4,8 +4,9 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    float: left;
 
-    height: 95vh;
+    height: calc(100vh - 60px);
     width: 130px;
     background: var(--white);
     box-shadow: 1px 0 black;
