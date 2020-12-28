@@ -1,26 +1,17 @@
-import React, {PureComponent} from 'react';
-import {connect} from 'react-redux';
-// import PropTypes from 'prop-types';
+import React from 'react';
 import Header from '../header';
 import NavigationBar from "../navigation_bar";
+import {appPropertiesRequest} from "../../redux/appProperties/actions";
 
-class App extends PureComponent {
-    render() {
-        return (
-            <div>
-                <Header/>
-                <NavigationBar/>
-            </div>
-        );
-    }
+const App = ({store}) => {
+    store.dispatch(appPropertiesRequest());
+
+    return (
+        <div>
+            <Header/>
+            <NavigationBar/>
+        </div>
+    )
 }
 
-// App.propTypes = {
-
-// };
-
-const mapStateToProps = (state) => ({
-    foo: state,
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

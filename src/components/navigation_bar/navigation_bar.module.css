@@ -1,13 +1,20 @@
 .bar {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
     position: relative;
-    float: left;
 
-    height: 100vh;
+    height: 95vh;
     width: 130px;
     background: var(--white);
     box-shadow: 1px 0 black;
+}
+
+.topContent {
+    vertical-align: top;
+}
+
+.bottomContent {
+    vertical-align: bottom;
 }

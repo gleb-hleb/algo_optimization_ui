@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import './index.css';
 
 import App from './components/app';
 
-import store from './redux/store';
+import initializeStore from './redux/store';
+import {createHashHistory} from "history";
 
-// DEV ONLY!!!
-window.store = store;
+const history = createHashHistory();
+const initialState = window.initialReduxState;
+const store = initializeStore(initialState, history)
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <App store={store}/>
     </Provider>,
     document.getElementById('root')
 );

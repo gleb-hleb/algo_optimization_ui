@@ -10,10 +10,14 @@ import TelegramImg from './assets/icon-telegram.png';
 const NavigationBar = () => {
     return (
         <div className={styles.bar}>
-            <NavigationButton image={SystemImg}/>
-            <NavigationButton image={SupportImg}/>
-            <NavigationButton image={TelegramImg}/>
-            <NavigationButton image={SettingsImg}/>
+            <div className={styles.topContent}>
+                <NavigationButton image={SystemImg}/>
+                <NavigationButton image={SupportImg}/>
+                <NavigationButton image={TelegramImg}/>
+            </div>
+            <div className={styles.bottomContent}>
+                <NavigationButton image={SettingsImg}/>
+            </div>
         </div>
     );
 };
