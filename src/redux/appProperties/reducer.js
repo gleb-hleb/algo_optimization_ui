@@ -21,7 +21,7 @@ const appPropertiesReducer = (state = initialState, action) => {
         case AppPropertiesAction.GET_APP_PROPERTIES_SUCCESS:
             return {
                 ...state,
-                ...payload,
+                ...payload.data,
                 loading: false
             };
         default:
