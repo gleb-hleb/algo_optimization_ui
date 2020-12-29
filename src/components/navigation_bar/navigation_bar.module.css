@@ -5,6 +5,7 @@
     align-items: center;
     position: relative;
     float: left;
+    overflow: hidden;
 
     height: calc(100vh - 60px);
     width: 130px;

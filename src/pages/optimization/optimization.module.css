@@ -4,6 +4,34 @@
     float: left;
 
     height: calc(100vh - 60px);
+    max-height: calc(100vh - 60px);
+    overflow: hidden;
     width: calc(100vw - 130px);
     background: var(--grey);
+}
+
+.config {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    float: left;
+
+    height: 100%;
+    width: 60%;
+    background: var(--yellow-light);
+}
+
+.output {
+    display: flex;
+    position: relative;
+    float: left;
+
+    height: 100%;
+    width: 40%;
+    background: var(--yellow);
+}
+
+.heading {
+    font-size: 15px;
+    background-color: var(--grey);
 }
