@@ -8,12 +8,13 @@ import {
     setLongPeriodStep,
     setShortPeriodStep
 } from "../../redux/generalConfig/actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 // import styles from "./timeRange.module.css";
 
 
 const TimeRange = ({name, type}) => {
     const dispatch = useDispatch();
+    const generalConfig = useSelector(store => store.generalConfig)[type];
 
     const actionPeriod = (period) => {
         switch (period) {
@@ -47,18 +48,21 @@ const TimeRange = ({name, type}) => {
                 label="From"
                 type={'number'}
                 onChange={handleChange}
+                value={generalConfig.from || ''}
             />
             <TextField
                 id="to"
                 label="To"
                 type={'number'}
                 onChange={handleChange}
+                value={generalConfig.to || ''}
             />
             <TextField
                 id="step"
                 label="Step"
                 type={'number'}
                 onChange={handleChange}
+                value={generalConfig.step || ''}
             />
         </div>
     );

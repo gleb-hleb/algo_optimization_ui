@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './optimization.module.css'
 import PopUpMenu from "../../components/popUpMenu";
 import {
@@ -21,6 +21,11 @@ const Optimization = () => {
     const initialTradingPair = useSelector(store => store.tradingPairList.selected_trading_pair);
     const initialIndicator = useSelector(store => store.indicatorsList.selected_indicator);
 
+    const [strategyExpanded, setStrategyExpanded] = useState(true);
+    const [configExpanded, setConfigExpanded] = useState(false);
+    const [otherExpanded, setOtherExpanded] = useState(false);
+    const [resultExpanded, setResultExpanded] = useState(false);
+
     React.useEffect(() => {
         if (!tradingPairs) {
             dispatch(tradingPairListRequest())
@@ -36,7 +41,7 @@ const Optimization = () => {
             <CssBaseline/>
             <Typography component="div" className={styles.tab}>
                 <div className={styles.config}>
-                    <Accordion>
+                    <Accordion expanded={strategyExpanded} onChange={() => setStrategyExpanded(!strategyExpanded)}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-strategy-content"
@@ -59,7 +64,7 @@ const Optimization = () => {
                             />
                         </AccordionDetails>
                     </Accordion>
-                    <Accordion>
+                    <Accordion expanded={configExpanded} onChange={() => setConfigExpanded(!configExpanded)}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-optParams-content"
@@ -67,11 +72,11 @@ const Optimization = () => {
                         >
                             <Typography>Optimization parameters</Typography>
                         </AccordionSummary>
-                        <AccordionDetails>
+                        <AccordionDetails style={{maxHeight: '500px', overflow: 'auto'}}>
                             <ConfigList/>
                         </AccordionDetails>
                     </Accordion>
-                    <Accordion>
+                    <Accordion expanded={otherExpanded} onChange={() => setOtherExpanded(!otherExpanded)}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-otherParams-content"
@@ -82,7 +87,7 @@ const Optimization = () => {
                         <AccordionDetails>
                         </AccordionDetails>
                     </Accordion>
-                    <Accordion>
+                    <Accordion expanded={resultExpanded} onChange={() => setResultExpanded(!resultExpanded)}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-optResult-content"

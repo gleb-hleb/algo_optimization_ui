@@ -5,7 +5,7 @@
 
     height: calc(100vh - 60px);
     max-height: calc(100vh - 60px);
-    overflow: hidden;
+    overflow: auto;
     width: calc(100vw - 130px);
     background: var(--grey);
 }
@@ -15,6 +15,7 @@
     flex-direction: column;
     position: relative;
     float: left;
+    overflow: auto;
 
     height: 100%;
     width: 60%;

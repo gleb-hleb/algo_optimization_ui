@@ -3,13 +3,14 @@ import {GENERAL_CONFIG_CONSTANTS} from "./constants";
 const initialState = {
     longPeriod: {
         from: null,
-        to: null
+        to: null,
+        step: null
     },
     shortPeriod: {
         from: null,
-        to: null
-    },
-    periodStep: null,
+        to: null,
+        step: null
+    }
 };
 
 const generalConfigReducer = (state = initialState, action) => {

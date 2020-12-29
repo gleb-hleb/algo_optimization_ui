@@ -24,9 +24,10 @@ const ConfigList = () => {
     return (
         <div>
             {selectedIndicatorConfig.parameters.map((item) => {
+                const rangeType = item.name === "Long period"? 'longPeriod' : 'shortPeriod';
                 switch (item.component) {
                     case 'timeRange':
-                        return <TimeRange name={item.name} type={item.type} key={item.name}/>;
+                        return <TimeRange name={item.name} type={rangeType} key={item.name}/>;
                     default:
                         return null;
                 }
