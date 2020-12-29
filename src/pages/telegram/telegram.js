@@ -4,9 +4,7 @@ import styles from './telegram.module.css'
 const Telegram = () => {
     return (
         <div className={styles.tab}>
-            <article>
 
-            </article>
         </div>
     )
 }

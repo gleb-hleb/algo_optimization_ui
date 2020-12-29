@@ -4,11 +4,10 @@ import styles from './popUpMenu.module.css'
 import {Button, Menu, MenuItem, Typography} from '@material-ui/core';
 import {useDispatch} from "react-redux";
 
-const PopUpMenu = ({items, name}) => {
+const PopUpMenu = ({items, name, action, initialItem}) => {
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [selectedItem, setSelectedItem] = React.useState('none');
-    const tradingPairs = items?items:[];
+    const tradingPairs = items ? items : [];
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -16,7 +15,7 @@ const PopUpMenu = ({items, name}) => {
 
     const handleClose = (text) => {
         setAnchorEl(null);
-        setSelectedItem(text);
+        dispatch(action(text));
     };
 
     return (
@@ -24,15 +23,15 @@ const PopUpMenu = ({items, name}) => {
             <span className={styles.name}>{`${name}:`}</span>
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                 <Typography component={'span'} variant={'body2'}>
-                    {selectedItem}
+                    {initialItem?initialItem:'-'}
                 </Typography>
             </Button>
             <Menu
-                id="model-menu"
+                id={`${name}-menu`}
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
-                onClose={() => handleClose(selectedItem)}
+                onClose={() => setAnchorEl(null)}
             >
                 {tradingPairs.map((item) => (
                     <MenuItem

@@ -1,6 +1,7 @@
 import {INDICATORS} from "./constants";
 
 const initialState = {
+    selected_indicator: null,
     indicators: null,
     loading: false,
     error: null
@@ -27,6 +28,11 @@ const indicatorsListReducer = (state = initialState, action) => {
                 ...state,
                 error: payload,
                 loading: false,
+            };
+        case INDICATORS.SET_CURRENT_INDICATOR:
+            return {
+                ...state,
+                selected_indicator: payload
             };
         default:
             return state;

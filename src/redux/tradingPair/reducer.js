@@ -1,6 +1,7 @@
 import {TRADING_PAIR} from "./constants";
 
 const initialState = {
+    selected_trading_pair: null,
     trading_pair_list: null,
     loading: false,
     error: null
@@ -26,6 +27,11 @@ const tradingPairListReducer = (state = initialState, action) => {
                 ...state,
                 error: payload,
                 loading: false,
+            };
+        case TRADING_PAIR.SET_CURRENT_TRADING_PAIR:
+            return {
+                ...state,
+                selected_trading_pair: payload
             };
         default:
             return state;

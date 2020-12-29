@@ -10,14 +10,16 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {useDispatch, useSelector} from "react-redux";
-import {tradingPairListRequest} from "../../redux/tradingPair/actions";
-import {indicatorsListRequest} from "../../redux/indicatorsList/actions";
+import {setCurrentPair, tradingPairListRequest} from "../../redux/tradingPair/actions";
+import {indicatorsListRequest, setCurrentIndicator} from "../../redux/indicatorsList/actions";
+import ConfigList from "../../components/configList";
 
 const Optimization = () => {
     const dispatch = useDispatch();
     const tradingPairs = useSelector(store => store.tradingPairList.trading_pair_list);
     const indicators = useSelector(store => store.indicatorsList.indicators);
-    // const indicatorConfig = useSelector(store => store.selectedIndicatorConfig.indicator_config);
+    const initialTradingPair = useSelector(store => store.tradingPairList.selected_trading_pair);
+    const initialIndicator = useSelector(store => store.indicatorsList.selected_indicator);
 
     React.useEffect(() => {
         if (!tradingPairs) {
@@ -43,8 +45,18 @@ const Optimization = () => {
                             <Typography>Strategy</Typography>
                         </AccordionSummary>
                         <AccordionDetails style={{flexDirection: 'column'}}>
-                            <PopUpMenu items={tradingPairs} name={'Pair'}/>
-                            <PopUpMenu items={indicators} name={'Indicator'}/>
+                            <PopUpMenu
+                                items={tradingPairs}
+                                name={'Pair'}
+                                action={setCurrentPair}
+                                initialItem={initialTradingPair}
+                            />
+                            <PopUpMenu
+                                items={indicators}
+                                name={'Indicator'}
+                                action={setCurrentIndicator}
+                                initialItem={initialIndicator}
+                            />
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -56,6 +68,7 @@ const Optimization = () => {
                             <Typography>Optimization parameters</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
+                            <ConfigList/>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -78,7 +91,6 @@ const Optimization = () => {
                             <Typography>Optimization results</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <PopUpMenu/>
                         </AccordionDetails>
                     </Accordion>
                 </div>
