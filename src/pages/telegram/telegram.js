@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './telegram.module.css'
-import {indicatorsListRequest} from "../../redux/indicators/actions";
+import {indicatorsListRequest} from "../../redux/indicatorsList/actions";
 import {useDispatch, useSelector} from "react-redux";
 import {indicatorConfigRequest} from "../../redux/indicatorConfig/actions";
 

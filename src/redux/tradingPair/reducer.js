@@ -1,28 +1,27 @@
-import {INDICATORS} from "./constants";
+import {TRADING_PAIR} from "./constants";
 
 const initialState = {
-    indicators: null,
+    trading_pair: null,
     loading: false,
     error: null
 }
 
-const indicatorsListReducer = (state = initialState, action) => {
+const tradingPairListReducer = (state = initialState, action) => {
     const {type, payload} = action;
     switch (type) {
-        case INDICATORS.GET_INDICATORS_LIST_REQUEST:
+        case TRADING_PAIR.GET_TRADING_PAIR_LIST_REQUEST:
             return {
                 ...state,
                 error: null,
                 loading: true
             };
-        case INDICATORS.GET_INDICATORS_LIST_SUCCESS:
+        case TRADING_PAIR.GET_TRADING_PAIR_LIST_SUCCESS:
             return {
                 ...state,
-                //TODO: make payload.indicators
                 indicators: payload.payload,
                 loading: false
             };
-        case INDICATORS.GET_INDICATORS_LIST_ERROR:
+        case TRADING_PAIR.GET_TRADING_PAIR_LIST_ERROR:
             return {
                 ...state,
                 error: payload,
@@ -33,4 +32,4 @@ const indicatorsListReducer = (state = initialState, action) => {
     }
 };
 
-export default indicatorsListReducer;
+export default tradingPairListReducer;
