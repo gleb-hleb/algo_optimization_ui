@@ -26,7 +26,7 @@ const ConfigList = () => {
             {selectedIndicatorConfig.parameters.map((item) => {
                 switch (item.component) {
                     case 'timeRange':
-                        return <TimeRange name={item.name} type={item.type}/>;
+                        return <TimeRange name={item.name} type={item.type} key={item.name}/>;
                     default:
                         return null;
                 }
