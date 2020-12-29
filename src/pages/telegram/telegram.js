@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from './telegram.module.css'
-import {indicatorsListRequest} from "../../../redux/indicators/actions";
+import {indicatorsListRequest} from "../../redux/indicators/actions";
 import {useDispatch, useSelector} from "react-redux";
-import {indicatorConfigRequest} from "../../../redux/indicatorConfig/actions";
+import {indicatorConfigRequest} from "../../redux/indicatorConfig/actions";
 
 const Telegram = () => {
     const dispatch = useDispatch();
     const test = useSelector(store => store.selectedIndicatorConfig.indicator_config);
-    console.log(test);
 
     React.useEffect(() => {
         dispatch(indicatorConfigRequest('sma'))
