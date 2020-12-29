@@ -1,11 +1,11 @@
 import React from 'react';
 import {Switch, Route} from "react-router-dom";
 
-import Start from '../../pages/start';
-import Optimization from '../../pages/optimization';
-import Settings from '../../pages/settings';
-import Support from '../../pages/support';
-import Telegram from '../../pages/telegram';
+import Start from '../pages/start';
+import Optimization from '../pages/optimization';
+import Settings from '../pages/settings';
+import Support from '../pages/support';
+import Telegram from '../pages/telegram';
 
 const Routes = () => {
     return (
