@@ -9,8 +9,16 @@ const Telegram = () => {
     const test = useSelector(store => store.selectedIndicatorConfig.indicator_config);
 
     React.useEffect(() => {
-        dispatch(indicatorConfigRequest('sma'))
-    }, [dispatch])
+        console.log('1');
+        if (!test) {
+            dispatch(indicatorConfigRequest('sma'))
+        }
+    }, [dispatch, test])
+
+    React.useEffect(() => {
+        console.log('2');
+        console.log(test);
+    }, [test])
 
     return (
         <div className={styles.tab}>
