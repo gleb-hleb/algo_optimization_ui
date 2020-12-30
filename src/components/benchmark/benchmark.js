@@ -1,9 +1,8 @@
 import React from 'react';
 import {Typography} from "@material-ui/core";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 const Benchmark = () => {
-    const dispatch = useDispatch();
     const ratio = useSelector(store => store.ratio) || '-';
     const total = useSelector(store => store.ratio) || '-';
     const benchmark = useSelector(store => store.ratio) || '-';

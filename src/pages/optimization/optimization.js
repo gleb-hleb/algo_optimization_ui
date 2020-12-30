@@ -15,6 +15,7 @@ import {indicatorsListRequest, setCurrentIndicator} from "../../redux/indicators
 import ConfigList from "../../components/configList";
 import ButtonsRow from "../../components/buttonsRow";
 import Benchmark from "../../components/benchmark";
+import Plot from "../../components/plot";
 
 const Optimization = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,57 @@ const Optimization = () => {
     const indicators = useSelector(store => store.indicatorsList.indicators);
     const initialTradingPair = useSelector(store => store.tradingPairList.selected_trading_pair);
     const initialIndicator = useSelector(store => store.indicatorsList.selected_indicator);
+
+    const testData = {
+        labels: ["Jan", "Feb", "March", "April", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
+        datasets: [
+            {
+                type: "line",
+                label: "Line#1",
+                data: [86, 67, 91, 88, 45, 3, 21, 0, 89, 99, 100],
+                borderCapStyle: 'round',
+                pointRadius: 0,
+                hoverRadius: 8,
+                borderColor: '#6161f6',
+                backgroundColor: 'rgb(108, 108, 186, .5)',
+                fill: 'start',
+            },
+            {
+                type: "line",
+                label: "Line#2",
+                data: [74, 60, 21, 53, 78, 2, 0, 0, 78, 45, 55],
+                borderCapStyle: 'round',
+                pointRadius: 0,
+                hoverRadius: 8,
+                borderColor: '#f1dd5c',
+                backgroundColor: 'rgb(238,219,159, .5)',
+                fill: 'start',
+            },
+            {
+                type: "line",
+                label: "Line#3",
+                data: [67, 25, 34, 86, 90, 1, 22, 33, 44, 55, 66],
+                borderCapStyle: 'round',
+                pointRadius: 0,
+                hoverRadius: 8,
+                borderColor: '#e3238e',
+                backgroundColor: 'rgb(224,121,215, .5)',
+                fill: 'start',
+            },
+            {
+                type: "scatter",
+                label: "Line#4",
+                data: [9, 13, 24, 34, 45, 56, 68, 79, 99, 100, 2],
+                borderCapStyle: 'round',
+                pointStyle: 'cross',
+                pointRadius: 4,
+                hoverRadius: 8,
+                borderColor: '#ec1111',
+                fill: 'start',
+            }
+        ]
+    };
+    const plotData = useSelector(store => store.plotData) || testData;
 
     const [strategyExpanded, setStrategyExpanded] = useState(true);
     const [configExpanded, setConfigExpanded] = useState(false);
@@ -131,6 +183,7 @@ const Optimization = () => {
                             </Typography>
                             <Divider/>
                             <Benchmark/>
+                            <Plot data={plotData}/>
                         </AccordionDetails>
                     </Accordion>
                 </div>
