@@ -9,7 +9,7 @@ export const indicatorsListSuccess = (data) => (
 );
 
 export const indicatorsListError = (error) => (
-    {type: INDICATORS.GET_INDICATORS_LIST_ERROR, payload: {error}}
+    {type: INDICATORS.GET_INDICATORS_LIST_ERROR, payload: error}
 );
 
 export const setCurrentIndicator = (data) => (

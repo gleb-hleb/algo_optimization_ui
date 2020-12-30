@@ -7,11 +7,13 @@ import indicatorsListReducer from "../indicatorsList/reducer";
 import indicatorConfigReducer from "../indicatorConfig/reducer";
 import tradingPairListReducer from "../tradingPair/reducer";
 import generalConfigReducer from "../generalConfig/reducer";
+import feedbackReducer from "../feedback/reducer";
 
 import {appPropertiesSaga} from "../appProperties/sagas";
 import {indicatorsSaga} from "../indicatorsList/sagas";
 import {indicatorConfigSaga} from "../indicatorConfig/sagas";
 import {tradingPairSaga} from "../tradingPair/sagas";
+import {feedbackSaga} from "../feedback/sagas";
 
 const createRootReducer = (history) => combineReducers({
     router: connectRouter(history),
@@ -19,7 +21,8 @@ const createRootReducer = (history) => combineReducers({
     indicatorsList: indicatorsListReducer,
     selectedIndicatorConfig: indicatorConfigReducer,
     tradingPairList: tradingPairListReducer,
-    generalConfig: generalConfigReducer
+    generalConfig: generalConfigReducer,
+    feedback: feedbackReducer,
 });
 
 export function* rootSaga() {
@@ -28,6 +31,7 @@ export function* rootSaga() {
         fork(indicatorsSaga),
         fork(indicatorConfigSaga),
         fork(tradingPairSaga),
+        fork(feedbackSaga),
     ])
 }
 

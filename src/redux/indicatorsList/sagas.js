@@ -13,7 +13,7 @@ function* handleIndicatorsListRequest() {
     );
 
     if (result.error) {
-        yield put(indicatorsListError(result));
+        yield put(indicatorsListError(result.error));
     } else {
         yield put(indicatorsListSuccess(result.data));
     }

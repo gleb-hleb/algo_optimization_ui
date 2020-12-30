@@ -11,7 +11,6 @@ function* handleTradingPairRequest() {
         axios.get,
         `${API_ENDPOINT}/trading-pair/list`,
     );
-
     if (result.error) {
         yield put(tradingPairListError(result.error));
     } else {

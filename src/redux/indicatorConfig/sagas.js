@@ -11,7 +11,6 @@ function* handleIndicatorConfigRequest(action) {
         axios.get,
         `${API_ENDPOINT}/indicator/${action.payload}/meta`,
     );
-
     if (result.error) {
         yield put(indicatorConfigError(result.error));
     } else {

@@ -1,8 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './support.module.css'
 import {Button, Card, CardContent, TextField, Typography} from "@material-ui/core";
+import {useDispatch} from "react-redux";
+import {postFeedback} from "../../redux/feedback/actions";
 
 const Support = () => {
+    const dispatch = useDispatch();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleChange = (event) => {
+        switch (event.target.id) {
+            case 'outlined-name':
+                setName(event.target.value);
+                break;
+            case 'outlined-email':
+                setEmail(event.target.value);
+                break;
+            case 'outlined-username':
+                setUsername(event.target.value);
+                break;
+            case 'outlined-message':
+                setMessage(event.target.value);
+                break;
+            default:
+                break;
+        }
+    }
+    const handleClick = () => {
+        const body = {
+            telegram_profile: username,
+            title: 'hz',
+            message: message,
+            created_by: name
+        };
+        dispatch(postFeedback(body));
+    }
+
     return (
         <div className={styles.tab}>
             <div className={styles.about}>
@@ -33,6 +69,7 @@ const Support = () => {
                     <CardContent>
                         <div className={styles.input}>
                             <TextField
+                                onChange={handleChange}
                                 style={{width: '100%'}}
                                 id="outlined-name"
                                 label="Name"
@@ -40,6 +77,7 @@ const Support = () => {
                         </div>
                         <div className={styles.input}>
                             <TextField
+                                onChange={handleChange}
                                 style={{width: '100%'}}
                                 id="outlined-email"
                                 label="Email"
@@ -47,6 +85,7 @@ const Support = () => {
                         </div>
                         <div className={styles.input}>
                             <TextField
+                                onChange={handleChange}
                                 style={{width: '100%'}}
                                 id="outlined-username"
                                 label="Telegram username"
@@ -54,6 +93,7 @@ const Support = () => {
                         </div>
                         <div className={styles.input}>
                             <TextField
+                                onChange={handleChange}
                                 style={{width: '100%'}}
                                 multiline
                                 rows={6}
@@ -63,7 +103,8 @@ const Support = () => {
                         </div>
                         <div className={styles.button}>
                             <Button
-                                fullWidth='true'
+                                onClick={handleClick}
+                                fullWidth={true}
                                 variant='contained'
                                 size='large'
                                 color='primary'>
@@ -72,7 +113,6 @@ const Support = () => {
                         </div>
                     </CardContent>
                 </Card>
-
             </div>
         </div>
     )

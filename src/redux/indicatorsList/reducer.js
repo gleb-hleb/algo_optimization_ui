@@ -19,8 +19,7 @@ const indicatorsListReducer = (state = initialState, action) => {
         case INDICATORS.GET_INDICATORS_LIST_SUCCESS:
             return {
                 ...state,
-                //TODO: make payload.indicatorsList
-                indicators: payload.payload,
+                indicators: payload.indicators,
                 loading: false
             };
         case INDICATORS.GET_INDICATORS_LIST_ERROR:
