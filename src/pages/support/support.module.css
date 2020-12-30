@@ -8,3 +8,56 @@
     width: calc(100vw - 130px);
     background: var(--grey);
 }
+
+.about {
+    position: relative;
+    float: left;
+    overflow: auto;
+
+    height: calc(100vh);
+    width: 50%;
+    min-width: 500px;
+    min-height: 760px;
+    background: var(--grey);
+}
+
+.form {
+    position: relative;
+    float: left;
+    overflow: auto;
+
+    height: calc(100vh);
+    width: 50%;
+    min-width: 500px;
+    min-height: 760px;
+    background: var(--grey);
+}
+
+.about h1 {
+    margin-top: 75px;
+    margin-bottom: 26px;
+    text-align: center;
+}
+
+.card {
+    margin: 0 20px 0 20px;
+    height: 75%;
+}
+
+.text {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.input {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button {
+    align-content: center;
+    width: 35%;
+    height: 20%;
+    margin: 71px 32.5% 0 32.5%;
+}
