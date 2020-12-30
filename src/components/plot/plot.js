@@ -67,6 +67,10 @@ export default class Plot extends Component {
                 intersect: false,
                 axis: 'x',
                 display: true,
+            },
+            legend: {
+                display: true,
+                position: 'right'
             }
         }
     };

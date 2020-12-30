@@ -3,11 +3,12 @@ import {useHistory} from "react-router-dom";
 
 import styles from './navigation_button.module.css';
 
-const NavigationButton = ({image, to}) => {
+const NavigationButton = ({image, to, url}) => {
     const history = useHistory();
 
     const handleClick = () => {
-        history.push(to);
+        if (to) history.push(to);
+        if (url) window.open(url);
     }
 
     return (
