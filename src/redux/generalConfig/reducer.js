@@ -46,6 +46,11 @@ const generalConfigReducer = (state = initialState, action) => {
                 ...state,
                 shortPeriod: {...state.shortPeriod, step: payload}
             };
+        case GENERAL_CONFIG_CONSTANTS.SET_INTERVAL:
+            return {
+                ...state,
+                interval: payload
+            };
         default:
             return state;
     }

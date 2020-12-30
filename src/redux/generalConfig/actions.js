@@ -18,3 +18,6 @@ export const setLongPeriodStep = (data) => (
 export const setShortPeriodStep = (data) => (
     {type: GENERAL_CONFIG_CONSTANTS.SET_SHORT_PERIOD_STEP, payload: data}
 );
+export const setIntervalConfig = (data) => (
+    {type: GENERAL_CONFIG_CONSTANTS.SET_INTERVAL, payload: data}
+);

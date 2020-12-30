@@ -13,6 +13,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPair, tradingPairListRequest} from "../../redux/tradingPair/actions";
 import {indicatorsListRequest, setCurrentIndicator} from "../../redux/indicatorsList/actions";
 import ConfigList from "../../components/configList";
+import ButtonsRow from "../../components/buttonsRow";
 
 const Optimization = () => {
     const dispatch = useDispatch();
@@ -85,6 +86,7 @@ const Optimization = () => {
                             <Typography>Other parameters</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
+                            <ButtonsRow/>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion expanded={resultExpanded} onChange={() => setResultExpanded(!resultExpanded)}>
