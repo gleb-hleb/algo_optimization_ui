@@ -10,7 +10,7 @@
     height: calc(100vh - 60px);
     width: 130px;
     background: var(--white);
-    box-shadow: 1px 0 black;
+    border-right: 1px solid gray;
 }
 
 .topContent {

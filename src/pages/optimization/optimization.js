@@ -4,8 +4,8 @@ import PopUpMenu from "../../components/popUpMenu";
 import {
     Accordion,
     AccordionDetails,
-    AccordionSummary,
-    CssBaseline,
+    AccordionSummary, Button,
+    CssBaseline, Divider,
     Typography
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -102,7 +102,47 @@ const Optimization = () => {
                     </Accordion>
                 </div>
                 <div className={styles.output}>
-
+                    <Accordion expanded={true}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon/>}
+                            aria-controls="panel-back-testing-content"
+                            id="panel-back-testing-header"
+                        >
+                            <Typography>Backtesting</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails
+                            style={{display: 'flex', flexDirection: 'column'}}
+                        >
+                            <Typography
+                                component="div"
+                                style={{width: '100%'}}
+                            >
+                                <Typography
+                                    component="div"
+                                    style={{width: '55%', float: 'left'}}
+                                >
+                                    <h5>Scenario</h5>
+                                    <h5>Target: Shape ratio</h5>
+                                    <h5>Reserved: TODO</h5>
+                                </Typography>
+                                <Typography
+                                    component="div"
+                                    /*TODO: make height 100%*/
+                                    style={{height: '145.69px', width: '45%', float: 'left'}}
+                                >
+                                    <Button
+                                        variant="outlined"
+                                        color="primary"
+                                        size='large'
+                                        style={{position: 'relative', top: '50%', transform: 'translateY(-50%)'}}
+                                    >
+                                        Start optimization
+                                    </Button>
+                                </Typography>
+                            </Typography>
+                            <Divider/>
+                        </AccordionDetails>
+                    </Accordion>
                 </div>
             </Typography>
         </React.Fragment>

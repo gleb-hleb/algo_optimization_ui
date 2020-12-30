@@ -5,5 +5,5 @@
 
     height: 60px;
     background: var(--white);
-    box-shadow: 0 1px 1px black;
+    border-bottom: 1px solid gray;
 }

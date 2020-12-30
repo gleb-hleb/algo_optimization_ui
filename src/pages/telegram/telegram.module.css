@@ -6,5 +6,5 @@
 
     height: calc(100vh - 60px);
     width: calc(100vw - 130px);
-    background: var(--yellow);
+    background: var(--grey);
 }

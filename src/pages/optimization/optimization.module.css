@@ -8,6 +8,7 @@
     overflow: auto;
     width: calc(100vw - 130px);
     background: var(--grey);
+    border-radius: 5px;
 }
 
 .config {
@@ -17,19 +18,27 @@
     float: left;
     overflow: auto;
 
-    height: 100%;
-    width: 60%;
-    background: var(--yellow-light);
+    height: calc(100% - 10px);
+    width: 55%;
+    min-width: 305px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: var(--grey);
 }
 
 .output {
     display: flex;
+    flex-direction: column;
     position: relative;
     float: left;
+    overflow: auto;
 
-    height: 100%;
-    width: 40%;
-    background: var(--yellow);
+    height: calc(100% - 10px);
+    width: 45%;
+    min-width: 305px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: var(--grey);
 }
 
 .heading {
