@@ -56,6 +56,7 @@ const TimeRange = ({name, type}) => {
                 type={'number'}
                 onChange={handleChange}
                 value={generalConfig.to || ''}
+                style={{marginLeft: '5px'}}
             />
             <TextField
                 id="step"
@@ -63,6 +64,7 @@ const TimeRange = ({name, type}) => {
                 type={'number'}
                 onChange={handleChange}
                 value={generalConfig.step || ''}
+                style={{marginLeft: '5px'}}
             />
         </div>
     );

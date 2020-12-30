@@ -14,6 +14,7 @@ import {setCurrentPair, tradingPairListRequest} from "../../redux/tradingPair/ac
 import {indicatorsListRequest, setCurrentIndicator} from "../../redux/indicatorsList/actions";
 import ConfigList from "../../components/configList";
 import ButtonsRow from "../../components/buttonsRow";
+import Benchmark from "../../components/benchmark";
 
 const Optimization = () => {
     const dispatch = useDispatch();
@@ -46,8 +47,7 @@ const Optimization = () => {
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-strategy-content"
-                            id="panel-strategy-header"
-                        >
+                            id="panel-strategy-header">
                             <Typography>Strategy</Typography>
                         </AccordionSummary>
                         <AccordionDetails style={{flexDirection: 'column'}}>
@@ -55,22 +55,19 @@ const Optimization = () => {
                                 items={tradingPairs}
                                 name={'Pair'}
                                 action={setCurrentPair}
-                                initialItem={initialTradingPair}
-                            />
+                                initialItem={initialTradingPair}/>
                             <PopUpMenu
                                 items={indicators}
                                 name={'Indicator'}
                                 action={setCurrentIndicator}
-                                initialItem={initialIndicator}
-                            />
+                                initialItem={initialIndicator}/>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion expanded={configExpanded} onChange={() => setConfigExpanded(!configExpanded)}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-optParams-content"
-                            id="panel-optParams-header"
-                        >
+                            id="panel-optParams-header">
                             <Typography>Optimization parameters</Typography>
                         </AccordionSummary>
                         <AccordionDetails style={{maxHeight: '500px', overflow: 'auto'}}>
@@ -81,8 +78,7 @@ const Optimization = () => {
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-otherParams-content"
-                            id="panel-otherParams-header"
-                        >
+                            id="panel-otherParams-header">
                             <Typography>Other parameters</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -93,8 +89,7 @@ const Optimization = () => {
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-optResult-content"
-                            id="panel-optResult-header"
-                        >
+                            id="panel-optResult-header">
                             <Typography>Optimization results</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -106,21 +101,17 @@ const Optimization = () => {
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel-back-testing-content"
-                            id="panel-back-testing-header"
-                        >
+                            id="panel-back-testing-header">
                             <Typography>Backtesting</Typography>
                         </AccordionSummary>
                         <AccordionDetails
-                            style={{display: 'flex', flexDirection: 'column'}}
-                        >
+                            style={{display: 'flex', flexDirection: 'column'}}>
                             <Typography
                                 component="div"
-                                style={{width: '100%'}}
-                            >
+                                style={{width: '100%'}}>
                                 <Typography
                                     component="div"
-                                    style={{width: '55%', float: 'left'}}
-                                >
+                                    style={{width: '55%', float: 'left'}}>
                                     <h5>Scenario</h5>
                                     <h5>Target: Shape ratio</h5>
                                     <h5>Reserved: TODO</h5>
@@ -128,19 +119,18 @@ const Optimization = () => {
                                 <Typography
                                     component="div"
                                     /*TODO: make height 100%*/
-                                    style={{height: '145.69px', width: '45%', float: 'left'}}
-                                >
+                                    style={{height: '145.69px', width: '45%', float: 'left'}}>
                                     <Button
                                         variant="outlined"
                                         color="primary"
                                         size='large'
-                                        style={{position: 'relative', top: '50%', transform: 'translateY(-50%)'}}
-                                    >
+                                        style={{position: 'relative', top: '50%', transform: 'translateY(-50%)'}}>
                                         Start optimization
                                     </Button>
                                 </Typography>
                             </Typography>
                             <Divider/>
+                            <Benchmark/>
                         </AccordionDetails>
                     </Accordion>
                 </div>
