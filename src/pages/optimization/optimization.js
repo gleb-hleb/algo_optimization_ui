@@ -13,9 +13,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPair, tradingPairListRequest} from "../../redux/tradingPair/actions";
 import {indicatorsListRequest, setCurrentIndicator} from "../../redux/indicatorsList/actions";
 import ConfigList from "../../components/configList";
+<<<<<<< HEAD
 import ButtonsRow from "../../components/buttonsRow";
 import Benchmark from "../../components/benchmark";
 import Plot from "../../components/plot";
+=======
+import Header from '../../components/header/index.js';
+import NavigationBar from "../../components/navigation_bar";
+>>>>>>> c7d8915... messy dump/ saved for a reason/ llbe rebuild xwith only one option to sign in using google account/ other cases are shit
 
 const Optimization = () => {
     const dispatch = useDispatch();
@@ -95,6 +100,7 @@ const Optimization = () => {
     }, [dispatch])
 
     return (
+<<<<<<< HEAD
         <React.Fragment>
             <CssBaseline/>
             <Typography component="div" className={styles.tab}>
@@ -193,6 +199,79 @@ const Optimization = () => {
                 </div>
             </Typography>
         </React.Fragment>
+=======
+        <Header>
+            <NavigationBar>
+                <React.Fragment>
+                    <CssBaseline/>
+                    <Typography component="div" className={styles.tab}>
+                        <div className={styles.config}>
+                            <Accordion expanded={strategyExpanded} onChange={() => setStrategyExpanded(!strategyExpanded)}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon/>}
+                                    aria-controls="panel-strategy-content"
+                                    id="panel-strategy-header"
+                                >
+                                    <Typography>Strategy</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails style={{flexDirection: 'column'}}>
+                                    <PopUpMenu
+                                        items={tradingPairs}
+                                        name={'Pair'}
+                                        action={setCurrentPair}
+                                        initialItem={initialTradingPair}
+                                    />
+                                    <PopUpMenu
+                                        items={indicators}
+                                        name={'Indicator'}
+                                        action={setCurrentIndicator}
+                                        initialItem={initialIndicator}
+                                    />
+                                </AccordionDetails>
+                            </Accordion>
+                            <Accordion expanded={configExpanded} onChange={() => setConfigExpanded(!configExpanded)}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon/>}
+                                    aria-controls="panel-optParams-content"
+                                    id="panel-optParams-header"
+                                >
+                                    <Typography>Optimization parameters</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails style={{maxHeight: '500px', overflow: 'auto'}}>
+                                    <ConfigList/>
+                                </AccordionDetails>
+                            </Accordion>
+                            <Accordion expanded={otherExpanded} onChange={() => setOtherExpanded(!otherExpanded)}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon/>}
+                                    aria-controls="panel-otherParams-content"
+                                    id="panel-otherParams-header"
+                                >
+                                    <Typography>Other parameters</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                </AccordionDetails>
+                            </Accordion>
+                            <Accordion expanded={resultExpanded} onChange={() => setResultExpanded(!resultExpanded)}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon/>}
+                                    aria-controls="panel-optResult-content"
+                                    id="panel-optResult-header"
+                                >
+                                    <Typography>Optimization results</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                </AccordionDetails>
+                            </Accordion>
+                        </div>
+                        <div className={styles.output}>
+
+                        </div>
+                    </Typography>
+                </React.Fragment>
+            </NavigationBar>
+        </Header>
+>>>>>>> c7d8915... messy dump/ saved for a reason/ llbe rebuild xwith only one option to sign in using google account/ other cases are shit
     )
 }
 
