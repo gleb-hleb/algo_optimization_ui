@@ -7,7 +7,7 @@ import {
     setShortPeriodTo,
     setLongPeriodStep,
     setShortPeriodStep
-} from "../../redux/generalConfig/actions";
+} from "../../store/generalConfig/actions";
 import {useDispatch, useSelector} from "react-redux";
 // import styles from "./timeRange.module.css";
 

@@ -4,8 +4,8 @@ import './index.css';
 
 import App from './components/app';
 
-import initializeStore from './redux/store';
-import history from './redux/history'
+import initializeStore from './store/store';
+import history from './store/history'
 
 const initialState = {};
 const store = initializeStore(initialState, history)

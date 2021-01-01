@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {indicatorConfigRequest} from "../../redux/indicatorConfig/actions";
+import {indicatorConfigRequest} from "../../store/indicatorConfig/actions";
 import {CircularProgress} from "@material-ui/core";
 import TimeRange from "../timeRange";
 

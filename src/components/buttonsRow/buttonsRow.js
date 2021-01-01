@@ -3,7 +3,7 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import {Typography} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {setIntervalConfig} from "../../redux/generalConfig/actions";
+import {setIntervalConfig} from "../../store/generalConfig/actions";
 
 const ButtonsRow = () => {
     const dispatch = useDispatch();
