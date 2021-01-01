@@ -1,16 +1,20 @@
+import { ConnectedRouter } from 'connected-react-router';
 import React from 'react';
-import {appPropertiesRequest} from "../../redux/appProperties/actions";
-import NavigationBar from "../navigationBar";
+import { Provider } from 'react-redux';
+import {appPropertiesRequest} from "../../store/appProperties/actions";
 import Routes from "../../routes/routes";
 
-const App = ({store}) => {
+const App = ({store, history}) => {
+
+    
     store.dispatch(appPropertiesRequest());
 
     return (
-        <div>
-            <NavigationBar/>
-            <Routes/>
-        </div>
+        <Provider store={store}>
+            <ConnectedRouter history={history}>
+                <Routes/>
+            </ConnectedRouter>
+        </Provider>
     )
 }
 

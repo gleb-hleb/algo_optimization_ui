@@ -1,22 +1,49 @@
 import React from 'react';
-import {Switch, Route} from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { Switch, Route } from "react-router-dom";
+import MyLoadable from '../helpers/MyLoadable';
+import { userIsAuthenticated } from '../helpers/PrivateRoutes';
 
-import Start from '../pages/start';
-import Optimization from '../pages/optimization';
-import Settings from '../pages/settings';
-import Support from '../pages/support';
-import Telegram from '../pages/telegram';
+const LandingPage = MyLoadable({loader: () => import('../pages/landing-page/LandingPage')});
+const Optimization = MyLoadable({loader: () => import('../pages/optimization/optimization')});
+const Settings = MyLoadable({loader: () => import('../pages/settings/settings')});
+const Support = MyLoadable({loader: () => import('../pages/support/support')});
+
+function NotFound() {
+    return (
+        <div className='not-found'>
+            <span className='error'>404</span>
+            <p>Запрашиваемая Вами страница не найдена</p>
+        </div>
+    );
+}
 
 const Routes = () => {
+    const auth_enabled = useSelector(store => store.appProperties.auth_enabled);
     return (
-        //TODO: Put here authorization in future
-        <Switch>
-            <Route exact path={'/'} component={Start}/>
-            <Route path={'/optimization_page'} component={Optimization}/>
-            <Route path={'/settings_page'} component={Settings}/>
-            <Route path={'/support_page'} component={Support}/>
-            <Route path={'/telegram_page'} component={Telegram}/>
-        </Switch>
+        <> 
+            <Switch>
+                <Route 
+                    path='/' 
+                    exact 
+                    component={LandingPage}/>
+                <Route 
+                    path='/optimization_page' 
+                    exact
+                    component={auth_enabled ? userIsAuthenticated(Optimization) : Optimization}
+                />
+                <Route 
+                    path='/settings_page' 
+                    exact
+                    component={auth_enabled ? userIsAuthenticated(Settings) : Settings}
+                />
+                <Route 
+                    path='/support_page'
+                    exact
+                    component={auth_enabled ? userIsAuthenticated(Support) : Support}/>
+                <Route component={NotFound}/>
+            </Switch>
+        </>
     )
 };
 

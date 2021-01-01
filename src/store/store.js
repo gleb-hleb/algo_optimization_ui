@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {routerMiddleware} from 'connected-react-router';
 
-import createRootReducer, {rootSaga} from './rootReducer';
+import createRootReducer, {rootSaga} from '.';
 import createSagaMiddleware from 'redux-saga';
 
 function initializeStore(initialState, history) {

@@ -10,12 +10,13 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {useDispatch, useSelector} from "react-redux";
-import {setCurrentPair, tradingPairListRequest} from "../../redux/tradingPair/actions";
-import {indicatorsListRequest, setCurrentIndicator} from "../../redux/indicatorsList/actions";
+import {setCurrentPair, tradingPairListRequest} from "../../store/tradingPair/actions";
+import {indicatorsListRequest, setCurrentIndicator} from "../../store/indicatorsList/actions";
 import ConfigList from "../../components/configList";
 import ButtonsRow from "../../components/buttonsRow";
 import Benchmark from "../../components/benchmark";
 import Plot from "../../components/plot";
+import NavigationBar from "../../components/navigationBar/navigation_bar";
 
 const Optimization = () => {
     const dispatch = useDispatch();
@@ -96,6 +97,7 @@ const Optimization = () => {
 
     return (
         <React.Fragment>
+            <NavigationBar/>
             <CssBaseline/>
             <Typography component="div" className={styles.tab}>
                 <div className={styles.config}>

@@ -12,7 +12,7 @@ const NavigationBar = () => {
             <div className={styles.topContent}>
                 <NavigationButton image={SystemImg} to={'/optimization_page'}/>
                 <NavigationButton image={SupportImg} to={'/support_page'}/>
-                <NavigationButton image={TelegramImg} to={undefined} url={'https://telegram.org/'}/>
+                <NavigationButton image={TelegramImg} to={undefined} url={'https://t.me/tutby_official'}/>
             </div>
             <div className={styles.bottomContent}>
                 <NavigationButton image={SettingsImg} to={'/settings_page'}/>
