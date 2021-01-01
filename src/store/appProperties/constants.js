@@ -1,0 +1,4 @@
+export const AppPropertiesAction = {
+    GET_APP_PROPERTIES_REQUEST: 'appProperties/GET_APP_PROPERTIES_REQUEST',
+    GET_APP_PROPERTIES_SUCCESS: 'appProperties/GET_APP_PROPERTIES_SUCCESS',
+};
