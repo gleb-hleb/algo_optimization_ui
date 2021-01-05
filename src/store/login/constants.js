@@ -1,0 +1,15 @@
+export const LOGIN_ACTION_TYPES = {
+    GET_USER_REQUEST: '@@login/GET_USER_REQUEST',
+    GET_USER_SUCCESS: '@@login/GET_USER_SUCCESS',
+    GET_USER_ERROR: '@@login/GET_USER_ERROR',
+    
+    LOGIN: '@@login/LOGIN',
+    LOGIN_SUCCESS: '@@login/LOGIN_SUCCESS',
+    LOGIN_ERROR: '@@login/LOGIN_ERROR',
+
+    GOOGLE_LOGIN: '@@login/GOOGLE_LOGIN',
+    GOOGLE_LOGIN_SUCCESS: '@@login/GOOGLE_LOGIN_SUCCESS',
+    GOOGLE_LOGIN_ERROR: '@@login/GOOGLE_LOGIN_ERROR',
+
+    LOGOUT: '@@login/LOGOUT',
+};
