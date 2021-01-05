@@ -3,10 +3,7 @@ import axios from 'axios';
 import {googleLoginError, googleLoginSuccess, loginError, loginSuccess, userError, userSuccess} from './action';
 import { LOGIN_ACTION_TYPES } from './constants';
 
-//const API_ENDPOINT = getConfig('REACT_APP_API_ENDPOINT');
-// TODO
-//const API_ENDPOINT = window.REACT_APP_API_ENDPOINT;
-const API_ENDPOINT = "http://localhost:8000"
+const API_ENDPOINT = window.REACT_APP_API_ENDPOINT;
 
 function* handleUserLoaded() {
     try {
