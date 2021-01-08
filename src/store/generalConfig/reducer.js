@@ -12,7 +12,7 @@ const initialState = {
         step: null
     }
 };
-
+// TODO: DEPRECATED
 const generalConfigReducer = (state = initialState, action) => {
     const {type, payload} = action;
     switch (type) {

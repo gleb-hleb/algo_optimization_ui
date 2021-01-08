@@ -9,11 +9,20 @@ const Optimization = MyLoadable({loader: () => import('../pages/optimization/opt
 const Settings = MyLoadable({loader: () => import('../pages/settings/settings')});
 const Support = MyLoadable({loader: () => import('../pages/support/support')});
 
-function NotFound() {
+function NotFoundPage() {
     return (
         <div className='not-found'>
             <span className='error'>404</span>
-            <p>Запрашиваемая Вами страница не найдена</p>
+            <p>Page not found</p>
+        </div>
+    );
+}
+
+function ErrorPage() {
+    return (
+        <div className='not-found'>
+            <span className='error'>400</span>
+            <p>Error Page</p>
         </div>
     );
 }
@@ -41,7 +50,11 @@ const Routes = () => {
                     path='/support_page'
                     exact
                     component={auth_enabled ? userIsAuthenticated(Support) : Support}/>
-                <Route component={NotFound}/>
+                <Route component={NotFoundPage}/>
+                <Route 
+                    path='/error_page' 
+                    exact 
+                    component={ErrorPage}/>
             </Switch>
         </>
     )

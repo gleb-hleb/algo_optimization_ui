@@ -1,5 +1,7 @@
 import {GENERAL_CONFIG_CONSTANTS} from './constants'
 
+
+// TODO DEPRECATED
 export const setLongPeriodFrom = (data) => (
     {type: GENERAL_CONFIG_CONSTANTS.SET_LONG_PERIOD_FROM, payload: data}
 );
