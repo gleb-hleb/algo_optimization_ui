@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { doGoogleLogin, googleLoginError } from '../../store/login/action';
 import logo from '../../assets/start_page.png'
 import { useHistory } from 'react-router-dom';
+import { CircularProgress } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const getContentIfNotLoggedIn = (classes, error, showError, responseGoogleSuccess, responseGoogleFailure) => {
+const getContentIfNotLoggedIn = (classes, error, showError, 
+    responseGoogleSuccess, responseGoogleFailure) => {
     return (
         <div className={classes.paper}> 
             <Typography component="h1" variant="h5" align="center">
@@ -65,16 +67,15 @@ const getContentIfNotLoggedIn = (classes, error, showError, responseGoogleSucces
                 {error ? showError(error) : null}
             </div>                
             <GoogleLogin
-                fullWidth
                 variant="contained"
                 // move token to config.js thx
                 clientId="264231755039-fvspn2a81tu42bq5nk7rpe6fqa3uiqhd.apps.googleusercontent.com"
                 className={classes.googleSignIn}
                 buttonText="SIGNIN WITH GOOGLE"
+
                 onSuccess={responseGoogleSuccess}
                 onFailure={responseGoogleFailure}
             />
-
         </div>
     );
 }
@@ -98,25 +99,13 @@ const getContentIfLoggedIn = (classes, onButtonPress) => {
     );
 }
 
-
-const LandingPage = () => {
-    const classes = useStyles();
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const error = useSelector(store => store.login.error);
-    const token = useSelector(store => store.login.token);
-    const isAuth = useSelector(store => store.login.isAuth);
-    const auth_enabled = useSelector(store => store.appProperties.auth_enabled);
-    
+const getLandingPage = (dispatch, history, auth_enabled, isAuth, classes, error) => {
     const responseGoogleSuccess = (response) => {
         dispatch(doGoogleLogin(response.accessToken))
     };
 
     const responseGoogleFailure = (response) => {
-        //if (response.error && response.error !== "idpiframe_initialization_failed") {
-            dispatch(googleLoginError(response.details));
-        //}
+        dispatch(googleLoginError(response.details));
     };
 
     const showError = msg => {
@@ -127,25 +116,15 @@ const LandingPage = () => {
         history.push('/optimization_page')
     }
 
-    React.useEffect(()=>{
-        const tmp = localStorage.getItem('googleToken')
-        if (!isAuth && tmp) {
-            dispatch(doGoogleLogin(localStorage.getItem('googleToken')))
-        }
-    },[isAuth, token])
-
-    return (
-        <>
-            <Grid container component="main" className={classes.root}>
-                <CssBaseline />
-                <Grid item xs={false} sm={4} md={7} className={classes.image} >
-                    
-                </Grid>
+    return <Grid container component="main" className={classes.root}>
+            <CssBaseline />
+                <Grid item xs={false} sm={4} md={7} className={classes.image} ></Grid>
                 <Grid item xs={4} sm={8} md={5} component={Paper} elevation={6} square >
-                    <div className={classes.paper}>
-                        
+                <div className={classes.paper}>
+                    
                     {auth_enabled && !isAuth ? (
-                        getContentIfNotLoggedIn(classes, error, showError, responseGoogleSuccess, responseGoogleFailure)
+                        getContentIfNotLoggedIn(classes, error, showError, 
+                            responseGoogleSuccess, responseGoogleFailure)
                     ) : (
                         getContentIfLoggedIn(classes, onButtonPress)
                     )}
@@ -156,9 +135,51 @@ const LandingPage = () => {
                             {'.'}
                         </Typography>
                     </Box>
-                    </div>
+                </div>
                 </Grid>
             </Grid>
+}
+
+const getLoadingPage = () => {
+    return <div
+        style={{
+            position: 'absolute', left: '50%', top: '50%',
+            transform: 'translate(-50%, -50%)'
+        }}
+        >
+            <CircularProgress disableShrink />
+        </div>
+}
+
+const getErrorPage = (msg) => {
+    return <div
+    style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)'
+    }}
+    >
+        <span>{msg}</span>
+    </div>
+}
+
+const LandingPage = () => {
+    const classes = useStyles();
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const error = useSelector(store => store.login.error);
+    const isAuth = useSelector(store => store.login.isAuth);
+    const auth_enabled = useSelector(store => store.appProperties.auth_enabled);
+    const app_error = useSelector(store => store.appProperties.error);
+    const app_loading = useSelector(store => store.appProperties.loading);
+
+    React.useEffect(()=>{},[isAuth, app_loading, app_error])
+
+    return (
+        <>
+        {app_loading ? getLoadingPage() : 
+            app_error ? getErrorPage(app_error) : getLandingPage(dispatch, history, auth_enabled, isAuth, classes, error)
+        }
         </>
     );
 

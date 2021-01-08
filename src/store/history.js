@@ -1,7 +1,5 @@
 import {createHashHistory} from "history";
 
-const history = createHashHistory(
-    //{basename: '/'}
-);
+const history = createHashHistory();
 
 export default history;
