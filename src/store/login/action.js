@@ -15,5 +15,11 @@ export const doGoogleLogin = (payload) => ({type: LOGIN_ACTION_TYPES.GOOGLE_LOGI
 export const googleLoginSuccess = (login) => ({type: LOGIN_ACTION_TYPES.GOOGLE_LOGIN_SUCCESS, payload: login});
 export const googleLoginError = (error) => ({type: LOGIN_ACTION_TYPES.GOOGLE_LOGIN_ERROR, payload: error});
 
+// google signin
+export const doFacebookLogin = (payload) => ({type: LOGIN_ACTION_TYPES.FACEBOOK_LOGIN, payload: payload});
+export const facebookLoginSuccess = (login) => ({type: LOGIN_ACTION_TYPES.FACEBOOK_LOGIN_SUCCESS, payload: login});
+export const facebookLoginError = (error) => ({type: LOGIN_ACTION_TYPES.FACEBOOK_LOGIN_ERROR, payload: error});
+
+
 // logout
 export const doLogout = () => ({type: LOGIN_ACTION_TYPES.LOGOUT});

@@ -1,6 +1,6 @@
 import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
-import {googleLoginError, googleLoginSuccess, loginError, loginSuccess, userError, userSuccess} from './action';
+import {facebookLoginError, facebookLoginSuccess, googleLoginError, googleLoginSuccess, loginError, loginSuccess, userError, userSuccess} from './action';
 import { LOGIN_ACTION_TYPES } from './constants';
 
 const API_ENDPOINT = window.REACT_APP_API_ENDPOINT;
@@ -61,7 +61,31 @@ function* handleUserGoogleLogin(action) {
             yield put(googleLoginSuccess(res.data));
         }
     } catch (err) {
-        yield put(googleLoginError('Fatal login error'));
+        yield put(googleLoginError(err));
+        console.log(err)
+    }
+}
+
+function* handleUserFacebookLogin(action) {
+    const access_token = {access_token: action.payload};
+    const config = {
+        headers: {'Content-Type': 'application/json'}
+    };
+    try {
+        const res = yield call(
+            axios.post,
+            `${API_ENDPOINT}/auth/facebook/`,
+            access_token,
+            config
+        );
+
+        if (res.error || res.status >= 401) {
+            yield put(facebookLoginError(res.error));
+        } else {
+            yield put(facebookLoginSuccess(res.data));
+        }
+    } catch (err) {
+        yield put(facebookLoginError(err));
     }
 }
 
@@ -88,4 +112,12 @@ function* watchHandleUserGoogleLogin() {
 
 export function* userGoogleLoginSaga() {
     yield all([fork(watchHandleUserGoogleLogin)]);
+}
+
+function* watchHandleUserFacebookLogin() {
+    yield takeLatest(LOGIN_ACTION_TYPES.FACEBOOK_LOGIN, handleUserFacebookLogin);
+}
+
+export function* userFacebookLoginSaga() {
+    yield all([fork(watchHandleUserFacebookLogin)]);
 }

@@ -4,11 +4,13 @@ const initialState = {
     version: null,
     app_environment: null,
     auth_enabled: null,
-    loading: false
+    loading: false,
+    error: null
 };
 
 const appPropertiesReducer = (state = initialState, action) => {
     const {type, payload} = action;
+    
     switch (type) {
         case AppPropertiesAction.GET_APP_PROPERTIES_REQUEST:
             return {
@@ -16,13 +18,23 @@ const appPropertiesReducer = (state = initialState, action) => {
                 version: null,
                 app_environment: null,
                 auth_enabled: null,
-                loading: true
+                loading: true,
+                error: null
             };
         case AppPropertiesAction.GET_APP_PROPERTIES_SUCCESS:
             return {
                 ...state,
-                ...payload.data,
+                ...payload,
                 loading: false
+            };
+        case AppPropertiesAction.GET_APP_PROPERTIES_ERROR:
+            return {
+                ...state,
+                version: null,
+                app_environment: null,
+                auth_enabled: null,
+                loading: false,
+                error: payload
             };
         default:
             return state;
