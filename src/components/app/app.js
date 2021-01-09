@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import {appPropertiesRequest} from "../../store/appProperties/actions";
 import Routes from "../../routes/routes";
 import { doGoogleLogin } from '../../store/login/action';
+import NavigationBar from "../navigationBar";
 
 const App = ({store, history}) => {
     store.dispatch(appPropertiesRequest());
@@ -15,7 +16,8 @@ const App = ({store, history}) => {
     return (
         <Provider store={store}>
             <ConnectedRouter history={history}>
-                <Routes/>
+                {/*<Routes/>*/}
+                <NavigationBar/>
             </ConnectedRouter>
         </Provider>
     )

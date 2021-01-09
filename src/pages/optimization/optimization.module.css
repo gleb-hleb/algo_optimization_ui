@@ -1,12 +1,11 @@
 .tab {
     display: flex;
     position: relative;
-    float: left;
+    margin-top: 64px;
 
-    height: calc(100vh);
-    max-height: calc(100vh);
+    height: calc(100vh - 64px);
+    width: 100%;
     overflow: auto;
-    width: calc(100vw - 130px);
     background: var(--grey);
     border-radius: 5px;
 }

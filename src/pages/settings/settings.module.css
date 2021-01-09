@@ -1,10 +1,8 @@
 .tab {
     display: flex;
     position: relative;
-    float: left;
     overflow: auto;
+    margin-top: 64px;
 
-    height: calc(100vh);
-    width: calc(100vw - 130px);
-    background: var(--grey);
+    height: calc(100vh - 64px);
 }

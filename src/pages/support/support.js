@@ -42,8 +42,8 @@ const Support = () => {
 
     return (
         <React.Fragment>
-            <NavigationBar/>
-            <CssBaseline/>  
+            {/*<NavigationBar/>*/}
+            {/*<CssBaseline/>  */}
             <div className={styles.tab}>
                 <div className={styles.about}>
                     <h1>About [project_name]</h1>

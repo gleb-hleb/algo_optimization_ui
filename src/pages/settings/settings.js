@@ -6,8 +6,8 @@ import styles from './settings.module.css'
 const Settings = () => {
     return (
         <React.Fragment>
-            <NavigationBar/>
-            <CssBaseline/>  
+            {/*<NavigationBar/>*/}
+            {/*<CssBaseline/>  */}
             <div className={styles.tab}>
 
             </div>

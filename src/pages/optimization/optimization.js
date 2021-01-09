@@ -97,8 +97,8 @@ const Optimization = () => {
 
     return (
         <React.Fragment>
-            <NavigationBar/>
-            <CssBaseline/>
+            {/*<NavigationBar/>*/}
+            {/*<CssBaseline/>*/}
             <Typography component="div" className={styles.tab}>
                 <div className={styles.config}>
                     <Accordion expanded={strategyExpanded} onChange={() => setStrategyExpanded(!strategyExpanded)}>
