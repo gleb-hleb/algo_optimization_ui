@@ -86,7 +86,19 @@ const loginReducer = (state = initialState, action) => {
                 error: null
             };
         }
-        case LOGIN_ACTION_TYPES.GOOGLE_LOGIN_ERROR:
+        case LOGIN_ACTION_TYPES.GOOGLE_LOGIN_ERROR: {
+            localStorage.removeItem('token');
+            localStorage.removeItem('googleToken');
+            localStorage.removeItem('facebookToken');
+            return {
+                ...state,
+                token: null,
+                isAuth: false,
+                loading: false,
+                user: null,
+                error: action.payload.message
+            };
+        }
         case LOGIN_ACTION_TYPES.FACEBOOK_LOGIN_ERROR:
         case LOGIN_ACTION_TYPES.LOGIN_ERROR:
         case LOGIN_ACTION_TYPES.LOGOUT:

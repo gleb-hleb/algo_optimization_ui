@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import MyLoadable from '../helpers/MyLoadable';
 import { userIsAuthenticated } from '../helpers/PrivateRoutes';
 
+const HomePage = MyLoadable({loader: () => import('../pages/home-page/HomePage')});
 const LandingPage = MyLoadable({loader: () => import('../pages/landing-page/LandingPage')});
 const Optimization = MyLoadable({loader: () => import('../pages/optimization/optimization')});
 const Settings = MyLoadable({loader: () => import('../pages/settings/settings')});
@@ -35,7 +36,7 @@ const Routes = () => {
                 <Route 
                     path='/' 
                     exact 
-                    component={LandingPage}/>
+                    component={HomePage}/>
                 <Route 
                     path='/optimization_page' 
                     exact

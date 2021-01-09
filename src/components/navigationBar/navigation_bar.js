@@ -15,7 +15,7 @@ const NavigationBar = () => {
                 <NavigationButton image={TelegramImg} to={undefined} url={'https://t.me/tutby_official'}/>
             </div>
             <div className={styles.bottomContent}>
-                <NavigationButton image={SettingsImg} to={'/settings_page'}/>
+                <NavigationButton image={SettingsImg} to={'/settings_page'} disc={true}/>
             </div>
         </div>
     );

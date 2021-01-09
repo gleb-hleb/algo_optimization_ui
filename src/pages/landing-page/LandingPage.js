@@ -9,7 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { doGoogleLogin, googleLoginError } from '../../store/login/action';
-import logo from '../../assets/start_page.png'
 import { useHistory } from 'react-router-dom';
 import { CircularProgress } from '@material-ui/core';
 
@@ -19,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: logo,
     backgroundRepeat: 'no-repeat',
     backgroundColor: theme.palette.grey[90],
     backgroundSize: 'cover',

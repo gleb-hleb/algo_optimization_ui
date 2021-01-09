@@ -86,7 +86,6 @@ function* handleUserFacebookLogin(action) {
         }
     } catch (err) {
         yield put(facebookLoginError(err));
-        console.log(err)
     }
 }
 

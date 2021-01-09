@@ -1,14 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {useHistory} from "react-router-dom";
+import { doLogout } from '../../../store/login/action';
 
 import styles from './navigation_button.module.css';
 
-const NavigationButton = ({image, to, url}) => {
+const NavigationButton = ({image, to, url, disc}) => {
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleClick = () => {
-        if (to) history.push(to);
-        if (url) window.open(url);
+        if (disc) dispatch(doLogout())
+        else {
+            if (to) history.push(to);
+            if (url) window.open(url);
+        }
     }
 
     return (
