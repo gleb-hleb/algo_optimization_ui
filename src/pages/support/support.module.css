@@ -12,12 +12,9 @@
 .about {
     position: relative;
     float: left;
-    overflow: auto;
 
     height: calc(100vh - 64px);
     width: 50%;
-    min-width: 500px;
-    min-height: 760px;
     background: var(--grey);
 }
 
@@ -27,19 +24,19 @@
 
     height: calc(100vh - 64px);
     width: 50%;
-    min-width: 500px;
     background: var(--grey);
 }
 
 .about h1 {
-    margin-top: 75px;
+    color: black;
+    margin-top: 126px;
     margin-bottom: 26px;
     text-align: center;
 }
 
 .card {
     margin: 0 20px 0 20px;
-    height: 75%;
+    min-height: 75%;
 }
 
 .text {

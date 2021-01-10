@@ -9,6 +9,7 @@ import {
     setShortPeriodStep
 } from "../../store/generalConfig/actions";
 import {useDispatch, useSelector} from "react-redux";
+import Typography from "@material-ui/core/Typography";
 // import styles from "./timeRange.module.css";
 
 
@@ -42,11 +43,12 @@ const TimeRange = ({name, type}) => {
 
     return (
         <div>
-            <h4>{`${name}:`}</h4>
+            <Typography style={{color: '#323131', marginTop: '20px'}}>{`${name}:`}</Typography>
             <TextField
                 id="from"
                 label="From"
                 type={'number'}
+                style={{width: "20%"}}
                 onChange={handleChange}
                 value={generalConfig.from || ''}
             />
@@ -56,15 +58,16 @@ const TimeRange = ({name, type}) => {
                 type={'number'}
                 onChange={handleChange}
                 value={generalConfig.to || ''}
-                style={{marginLeft: '5px'}}
+                style={{marginLeft: '5px', width: "20%"}}
             />
             <TextField
                 id="step"
                 label="Step"
                 type={'number'}
+                style={{width: "20%"}}
                 onChange={handleChange}
                 value={generalConfig.step || ''}
-                style={{marginLeft: '5px'}}
+                style={{marginLeft: '5px', width: "20%"}}
             />
         </div>
     );

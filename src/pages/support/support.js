@@ -68,7 +68,7 @@ const Support = () => {
                             to contact us using the form below.
                         </div>
                     </div>
-                    <h1 style={{textAlign: 'center'}}>Contact Us</h1>
+                    <h1 style={{textAlign: 'center', color: 'black'}}>Contact Us</h1>
                     <Card className={styles.card}>
                         <CardContent>
                             <div className={styles.input}>
