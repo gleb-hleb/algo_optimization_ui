@@ -59,7 +59,6 @@ const loginReducer = (state = initialState, action) => {
         }
         case LOGIN_ACTION_TYPES.GOOGLE_LOGIN_SUCCESS: {
             localStorage.setItem('token', action.payload.token);
-            console.log(action)
             setupRequestInterceptor(action.payload.token);
             return {
                 ...state,

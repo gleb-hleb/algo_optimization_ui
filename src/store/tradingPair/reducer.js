@@ -23,7 +23,6 @@ const tradingPairListReducer = (state = initialState, action) => {
                 loading: false
             };
         case TRADING_PAIR.GET_TRADING_PAIR_LIST_ERROR:
-            console.log(payload)
             return {
                 ...state,
                 error: payload,
