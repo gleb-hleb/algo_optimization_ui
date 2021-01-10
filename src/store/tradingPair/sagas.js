@@ -7,14 +7,18 @@ import {TRADING_PAIR} from "./constants";
 const API_ENDPOINT = window.REACT_APP_API_ENDPOINT;
 
 function* handleTradingPairRequest() {
-    const result = yield call(
-        axios.get,
-        `${API_ENDPOINT}/trading-pair/list`,
-    );
-    if (result.error) {
-        yield put(tradingPairListError(result.error));
-    } else {
-        yield put(tradingPairListSuccess(result.data));
+    try{
+        const result = yield call(
+            axios.get,
+            `${API_ENDPOINT}/trading-pair/list`,
+        );
+        if (result.error) {
+            yield put(tradingPairListError(result.error));
+        } else {
+            yield put(tradingPairListSuccess(result.data));
+        }
+    } catch (err) {
+        yield put(tradingPairListError('Critical error'));
     }
 }
 

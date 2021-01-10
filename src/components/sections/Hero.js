@@ -143,9 +143,9 @@ const Hero = ({className, topOuterDivider, bottomOuterDivider, topDivider, botto
                 <h1 className="mt-0 mb-50 reveal-from-bottom" data-reveal-delay="200"> </h1>
                 <div className="hero-figure reveal-from-bottom illustration-element-01" data-reveal-value="200px" data-reveal-delay="800">
                 
-                <iframe title="video" id="ytplayer" type="text/html" width="100%" height="500px"
+                {/*<iframe title="video" id="ytplayer" type="text/html" width="100%" height="500px"
                     src="https://www.youtube.com/embed/dqOIonni7-Q?autoplay=1&loop=1&color=white&mute=1"
-                    frameBorder="0" allowFullScreen></iframe>
+                    frameBorder="0" allowFullScreen></iframe>*/}
                 </div>
                 </div>
             </div>
