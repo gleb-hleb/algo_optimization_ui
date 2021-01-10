@@ -9,17 +9,15 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
 import ComputerIcon from '@material-ui/icons/Computer';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
-import TelegramIcon from '@material-ui/icons/Telegram';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {useHistory} from "react-router-dom";
-import Routes from "../../routes/routes";
+import { doLogout } from '../../store/login/action';
+import { useDispatch } from 'react-redux';
 
 const drawerWidth = 240;
 
@@ -102,9 +100,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function NavigationBar({ child }) {
+
+export default function NavigationBar({ children }) {
     const history = useHistory();
     const classes = useStyles();
+    const dispatch = useDispatch();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -112,6 +112,11 @@ export default function NavigationBar({ child }) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    function handleClick(e) {
+        e.preventDefault();
+        dispatch(doLogout());
+    }
 
     return (
         <div className={classes.root}>
@@ -130,11 +135,6 @@ export default function NavigationBar({ child }) {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         PROJECTPROJECTDEVELOPMENT
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon/>
-                        </Badge>
-                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -153,7 +153,7 @@ export default function NavigationBar({ child }) {
                 <List>
                     <div>
                         <ListItem button onClick={() => {
-                            history.push('/optimization_page')
+                            history.push('/backtest_options')
                         }}>
                             <ListItemIcon>
                                 <ComputerIcon/>
@@ -161,22 +161,14 @@ export default function NavigationBar({ child }) {
                             <ListItemText primary="Backtesting"/>
                         </ListItem>
                         <ListItem button onClick={() => {
-                            history.push('/support_page')
+                            history.push('/backtest_list')
                         }}>
                             <ListItemIcon>
                                 <RecordVoiceOverIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Support"/>
+                            <ListItemText primary="Previous Backtests"/>
                         </ListItem>
-                        <ListItem button onClick={() => {
-                            window.open('https://t.me/tutby_official')
-                        }}>
-                            <ListItemIcon>
-                                <TelegramIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="T.me"/>
-                        </ListItem>
-                        <ListItem button onClick={() => {}}>
+                        <ListItem button onClick={handleClick}>
                             <ListItemIcon>
                                 <ExitToAppIcon/>
                             </ListItemIcon>
@@ -185,7 +177,9 @@ export default function NavigationBar({ child }) {
                     </div>
                 </List>
             </Drawer>
-            <Routes/>
+            <main className="site-content">
+                {children}
+            </main>
         </div>
     );
 }

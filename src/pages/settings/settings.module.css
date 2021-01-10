@@ -1,8 +1,0 @@
-.tab {
-    display: flex;
-    position: relative;
-    overflow: auto;
-    margin-top: 64px;
-
-    height: calc(100vh - 64px);
-}
