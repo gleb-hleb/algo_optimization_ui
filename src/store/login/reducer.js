@@ -1,3 +1,4 @@
+import { setupRequestInterceptor } from '../../helpers/Interceptors';
 import { LOGIN_ACTION_TYPES } from './constants';
 
 export const initialState = {
@@ -50,16 +51,19 @@ const loginReducer = (state = initialState, action) => {
             localStorage.setItem('googleToken', action.payload);
             return {
                 ...state, 
+                googleToken: action.payload,
                 isAuth: false, 
                 loading: true,
                 user: null
             };
         }
         case LOGIN_ACTION_TYPES.GOOGLE_LOGIN_SUCCESS: {
-            localStorage.setItem('token', action.payload.key);
+            localStorage.setItem('token', action.payload.token);
+            console.log(action)
+            setupRequestInterceptor(action.payload.token);
             return {
                 ...state,
-                token: action.payload.key,
+                ...action.payload,
                 isAuth: true,
                 loading: false,
                 error: null

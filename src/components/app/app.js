@@ -1,11 +1,16 @@
-import { ConnectedRouter } from 'connected-react-router';
 import React from 'react';
 import { Provider } from 'react-redux';
-import {appPropertiesRequest} from "../../store/appProperties/actions";
+import { ConnectedRouter } from 'connected-react-router';
 import Routes from "../../routes/routes";
+import { appPropertiesRequest } from "../../store/appProperties/actions";
 import { doGoogleLogin } from '../../store/login/action';
+import { setupRequestInterceptor, setupResponceInterceptor } from '../../helpers/Interceptors';
+
 
 const App = ({store, history}) => {
+    setupRequestInterceptor(localStorage.getItem('token'));
+    setupResponceInterceptor(store, history);
+    
     store.dispatch(appPropertiesRequest());
 
     if (localStorage.getItem('googleToken')) {
