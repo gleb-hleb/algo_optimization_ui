@@ -5,6 +5,7 @@ import Routes from "../../routes/routes";
 import { appPropertiesRequest } from "../../store/appProperties/actions";
 import { doGoogleLogin } from '../../store/login/action';
 import { setupRequestInterceptor, setupResponceInterceptor } from '../../helpers/Interceptors';
+import NavigationBar from "../navigationBar";
 
 
 const App = ({store, history}) => {
@@ -20,7 +21,8 @@ const App = ({store, history}) => {
     return (
         <Provider store={store}>
             <ConnectedRouter history={history}>
-                <Routes/>
+                {/*<Routes/>*/}
+                <NavigationBar/>
             </ConnectedRouter>
         </Provider>
     )

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Switch, Route } from "react-router-dom";
+import {useSelector} from 'react-redux';
+import {Switch, Route} from "react-router-dom";
 import MyLoadable from '../helpers/MyLoadable';
-import { userIsAuthenticated } from '../helpers/PrivateRoutes';
+import {userIsAuthenticated} from '../helpers/PrivateRoutes';
 
 const HomePage = MyLoadable({loader: () => import('../pages/home-page/HomePage')});
 const LandingPage = MyLoadable({loader: () => import('../pages/landing-page/LandingPage')});
@@ -31,33 +31,31 @@ function ErrorPage() {
 const Routes = () => {
     const auth_enabled = useSelector(store => store.appProperties.auth_enabled);
     return (
-        <> 
-            <Switch>
-                <Route 
-                    path='/' 
-                    exact 
-                    component={HomePage}/>
-                <Route 
-                    path='/optimization_page' 
-                    exact
-                    component={auth_enabled ? userIsAuthenticated(Optimization) : Optimization}
-                />
-                <Route 
-                    path='/settings_page' 
-                    exact
-                    component={auth_enabled ? userIsAuthenticated(Settings) : Settings}
-                />
-                <Route 
-                    path='/support_page'
-                    exact
-                    component={auth_enabled ? userIsAuthenticated(Support) : Support}/>
-                <Route component={NotFoundPage}/>
-                <Route 
-                    path='/error_page' 
-                    exact 
-                    component={ErrorPage}/>
-            </Switch>
-        </>
+        <Switch>
+            <Route
+                path='/'
+                exact
+                component={HomePage}/>
+            <Route
+                path='/optimization_page'
+                exact
+                component={auth_enabled ? userIsAuthenticated(Optimization) : Optimization}
+            />
+            <Route
+                path='/settings_page'
+                exact
+                component={auth_enabled ? userIsAuthenticated(Settings) : Settings}
+            />
+            <Route
+                path='/support_page'
+                exact
+                component={auth_enabled ? userIsAuthenticated(Support) : Support}/>
+            <Route component={NotFoundPage}/>
+            <Route
+                path='/error_page'
+                exact
+                component={ErrorPage}/>
+        </Switch>
     )
 };
 

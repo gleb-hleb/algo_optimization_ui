@@ -42,8 +42,8 @@ const Support = () => {
 
     return (
         <React.Fragment>
-            <NavigationBar/>
-            <CssBaseline/>  
+            {/*<NavigationBar/>*/}
+            {/*<CssBaseline/>  */}
             <div className={styles.tab}>
                 <div className={styles.about}>
                     <h1>About [project_name]</h1>
@@ -68,7 +68,7 @@ const Support = () => {
                             to contact us using the form below.
                         </div>
                     </div>
-                    <h1 style={{textAlign: 'center'}}>Contact Us</h1>
+                    <h1 style={{textAlign: 'center', color: 'black'}}>Contact Us</h1>
                     <Card className={styles.card}>
                         <CardContent>
                             <div className={styles.input}>

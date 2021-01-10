@@ -2,13 +2,12 @@ import React, {useState} from 'react';
 import styles from './optimization.module.css'
 import PopUpMenu from "../../components/popUpMenu";
 import {
-    Accordion,
-    AccordionDetails,
-    AccordionSummary, Button,
-    CssBaseline, Divider,
+    Button, Card, CardContent, Divider, TextField,
     Typography
 } from "@material-ui/core";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPair, tradingPairListRequest} from "../../store/tradingPair/actions";
 import {indicatorsListRequest, setCurrentIndicator} from "../../store/indicatorsList/actions";
@@ -16,7 +15,6 @@ import ConfigList from "../../components/configList";
 import ButtonsRow from "../../components/buttonsRow";
 import Benchmark from "../../components/benchmark";
 import Plot from "../../components/plot";
-import NavigationBar from "../../components/navigationBar/navigation_bar";
 
 const Optimization = () => {
     const dispatch = useDispatch();
@@ -79,11 +77,7 @@ const Optimization = () => {
         ]
     };
     const plotData = useSelector(store => store.plotData) || testData;
-
-    const [strategyExpanded, setStrategyExpanded] = useState(true);
-    const [configExpanded, setConfigExpanded] = useState(false);
-    const [otherExpanded, setOtherExpanded] = useState(false);
-    const [resultExpanded, setResultExpanded] = useState(false);
+    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
     React.useEffect(() => {
         if (!tradingPairs) {
@@ -95,20 +89,21 @@ const Optimization = () => {
         // eslint-disable-next-line
     }, [dispatch])
 
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
     return (
         <React.Fragment>
-            <NavigationBar/>
-            <CssBaseline/>
+            {/*<NavigationBar/>*/}
+            {/*<CssBaseline/>*/}
             <Typography component="div" className={styles.tab}>
                 <div className={styles.config}>
-                    <Accordion expanded={strategyExpanded} onChange={() => setStrategyExpanded(!strategyExpanded)}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon/>}
-                            aria-controls="panel-strategy-content"
-                            id="panel-strategy-header">
-                            <Typography>Strategy</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails style={{flexDirection: 'column'}}>
+                    <Card>
+                        <CardContent style={{flexDirection: 'column'}}>
+                            <Typography style={{marginBottom: "30px"}}>
+                                Strategy
+                            </Typography>
                             <PopUpMenu
                                 items={tradingPairs}
                                 name={'Pair'}
@@ -119,79 +114,80 @@ const Optimization = () => {
                                 name={'Indicator'}
                                 action={setCurrentIndicator}
                                 initialItem={initialIndicator}/>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion expanded={configExpanded} onChange={() => setConfigExpanded(!configExpanded)}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon/>}
-                            aria-controls="panel-optParams-content"
-                            id="panel-optParams-header">
-                            <Typography>Optimization parameters</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails style={{maxHeight: '500px', overflow: 'auto'}}>
+                            <Divider style={{marginTop: '30px', marginBottom: '30px'}}/>
+                            <Typography style={{marginBottom: "30px"}}>
+                                Optimization params
+                            </Typography>
                             <ConfigList/>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion expanded={otherExpanded} onChange={() => setOtherExpanded(!otherExpanded)}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon/>}
-                            aria-controls="panel-otherParams-content"
-                            id="panel-otherParams-header">
-                            <Typography>Other parameters</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
+                            <Divider style={{marginTop: '30px', marginBottom: '30px'}}/>
+                            <Typography style={{marginBottom: "30px"}}>
+                                Other params
+                            </Typography>
                             <ButtonsRow/>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion expanded={resultExpanded} onChange={() => setResultExpanded(!resultExpanded)}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon/>}
-                            aria-controls="panel-optResult-content"
-                            id="panel-optResult-header">
-                            <Typography>Optimization results</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                        </AccordionDetails>
-                    </Accordion>
+                        </CardContent>
+                    </Card>
                 </div>
                 <div className={styles.output}>
-                    <Accordion expanded={true}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon/>}
-                            aria-controls="panel-back-testing-content"
-                            id="panel-back-testing-header">
-                            <Typography>Backtesting</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails
-                            style={{display: 'flex', flexDirection: 'column'}}>
+                    <Card>
+                        <CardContent style={{display: 'flex', flexDirection: 'column'}}>
+                            <Typography style={{marginBottom: "30px"}}>
+                                Backtesting
+                            </Typography>
                             <Typography
                                 component="div"
                                 style={{width: '100%'}}>
                                 <Typography
                                     component="div"
-                                    style={{width: '55%', float: 'left'}}>
-                                    <h5>Scenario</h5>
-                                    <h5>Target: Shape ratio</h5>
-                                    <h5>Reserved: TODO</h5>
+                                    style={{width: '70%', float: 'left', display: 'flex', flexDirection: 'column'}}>
+                                    <div>
+                                        <Typography style={{float: 'left', transform: 'translateY(50%)'}}>Date: </Typography>
+                                        <TextField
+                                            id="date"
+                                            label="From"
+                                            type="date"
+                                            style={{width: '165px', float: 'left', marginLeft: '15px', verticalAlign: 'center'}}
+                                            defaultValue="2017-05-24"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                        <TextField
+                                            id="date"
+                                            label="To"
+                                            type="date"
+                                            style={{width: '165px', float: 'left', marginLeft: '15px', verticalAlign: 'center'}}
+                                            defaultValue="2017-05-24"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                    </div>
+                                    <div>
+                                        <Typography style={{marginTop: '15px'}}>Target: Shape ratio</Typography>
+                                    </div>
+                                    <div>
+                                        <Typography style={{marginTop: '15px'}}>Reserved: TODO</Typography>
+                                    </div>
                                 </Typography>
                                 <Typography
                                     component="div"
                                     /*TODO: make height 100%*/
-                                    style={{height: '145.69px', width: '45%', float: 'left'}}>
+                                    style={{height: '145.69px', width: '30%', float: 'left'}}>
                                     <Button
                                         variant="outlined"
                                         color="primary"
                                         size='large'
-                                        style={{position: 'relative', top: '50%', transform: 'translateY(-50%)'}}>
+                                        style={{position: 'relative', top: '50%', transform: 'translateY(-50%)', width: '100%'}}>
                                         Start optimization
                                     </Button>
                                 </Typography>
                             </Typography>
-                            <Divider/>
+                            <Divider style={{marginTop: '30px', marginBottom: '30px'}}/>
                             <Benchmark/>
+                            <Divider style={{marginTop: '30px', marginBottom: '30px'}}/>
                             <Plot data={plotData}/>
-                        </AccordionDetails>
-                    </Accordion>
+                        </CardContent>
+                    </Card>
                 </div>
             </Typography>
         </React.Fragment>

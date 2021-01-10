@@ -15,7 +15,8 @@ function* handleIndicatorsListRequest() {
     if (result.error) {
         yield put(indicatorsListError(result.error));
     } else {
-        yield put(indicatorsListSuccess(result.data));
+        //TODO: remove zaglushka na result.data
+        yield put(indicatorsListSuccess({indicators: ['EMA']}));
     }
 }
 
