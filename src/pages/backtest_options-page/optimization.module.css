@@ -1,0 +1,46 @@
+.tab {
+    display: flex;
+    position: relative;
+    margin-top: 64px;
+
+    height: calc(100vh - 64px);
+    min-height: 700px;
+    width: 100%;
+    overflow: auto;
+    background: var(--grey);
+}
+
+.config {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    float: left;
+    overflow: auto;
+
+    height: calc(100% - 10px);
+    width: 55%;
+    min-width: 350px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: var(--grey);
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    float: left;
+    overflow: auto;
+
+    height: calc(100% - 10px);
+    width: 45%;
+    min-width: 470px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: var(--grey);
+}
+
+.heading {
+    font-size: 15px;
+    background-color: var(--grey);
+}

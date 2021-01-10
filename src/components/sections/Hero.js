@@ -42,7 +42,7 @@ const Hero = ({className, topOuterDivider, bottomOuterDivider, topDivider, botto
 
     function handleClick(e) {
         e.preventDefault();
-        history.push('/optimization_page')
+        history.push('/backtest_options')
     }
 
     const showError = msg => {

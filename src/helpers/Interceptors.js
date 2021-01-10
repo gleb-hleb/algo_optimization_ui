@@ -8,9 +8,7 @@ export const setupRequestInterceptor = (token) => {
             if (!config.headers.common['Authorization']) {
                 if (token) {
                     config.headers.common['Authorization'] = `JWT ${token}`;
-                    console.log(config)
                 } else {
-                    console.log(config)
                     return config;
                 }
             }
